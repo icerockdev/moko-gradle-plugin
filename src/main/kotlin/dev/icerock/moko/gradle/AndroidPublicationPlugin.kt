@@ -17,9 +17,11 @@ class AndroidPublicationPlugin : Plugin<Project> {
             apply(PublicationPlugin::class.java)
         }
 
-        target.configure<PublishingExtension> {
-            publications.create("release", MavenPublication::class.java) {
-                from(target.components.getByName("release"))
+        target.afterEvaluate {
+            target.configure<PublishingExtension> {
+                publications.create("release", MavenPublication::class.java) {
+                    from(target.components.getByName("release"))
+                }
             }
         }
     }
