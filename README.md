@@ -1,4 +1,4 @@
-[![GitHub license](https://img.shields.io/badge/license-Apache%20License%202.0-blue.svg?style=flat)](http://www.apache.org/licenses/LICENSE-2.0) [![Download](https://img.shields.io/maven-central/v/dev.icerock/moko-gradle-plugin) ](https://repo1.maven.org/maven2/dev/icerock/moko-gradle-plugin)
+[![GitHub license](https://img.shields.io/badge/license-Apache%20License%202.0-blue.svg?style=flat)](http://www.apache.org/licenses/LICENSE-2.0) [![Download](https://img.shields.io/maven-central/v/dev.icerock.moko/moko-gradle-plugin) ](https://repo1.maven.org/maven2/dev/icerock/moko/moko-gradle-plugin/)
 
 # MOKO gradle plugin
 This is a Gradle plugin with common build logic for all [MOKO libraries](https://moko.icerock.dev).  
