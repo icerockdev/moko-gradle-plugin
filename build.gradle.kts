@@ -78,6 +78,11 @@ gradlePlugin {
             implementationClass = "dev.icerock.moko.gradle.NexusPublicationPlugin"
         }
 
+        create("publication-hosts") {
+            id = "dev.icerock.moko.gradle.publication.hosts"
+            implementationClass = "dev.icerock.moko.gradle.HostsPublicationPlugin"
+        }
+
         create("stubjavadoc") {
             id = "dev.icerock.moko.gradle.stub.javadoc"
             implementationClass = "dev.icerock.moko.gradle.StubJavaDocPlugin"
@@ -86,6 +91,11 @@ gradlePlugin {
         create("tests") {
             id = "dev.icerock.moko.gradle.tests"
             implementationClass = "dev.icerock.moko.gradle.TestsReportPlugin"
+        }
+
+        create("jvm") {
+            id = "dev.icerock.moko.gradle.jvm"
+            implementationClass = "dev.icerock.moko.gradle.JvmPlugin"
         }
     }
 }
