@@ -1,10 +1,10 @@
 [versions]
-mokoGradlePluginVersion = "0.2.0"
+mokoGradlePluginVersion = "0.3.0"
 
-kotlinVersion = "1.6.10"
-androidGradlePluginVerison = "7.0.4"
-mobileMultiplatformVersion = "0.13.0"
-detektVersion = "1.19.0"
+kotlinVersion = "1.8.10"
+androidGradlePluginVerison = "7.4.2"
+mobileMultiplatformVersion = "0.14.2"
+detektVersion = "1.22.0"
 nexusPublishVersion = "1.1.0"
 
 [libraries]

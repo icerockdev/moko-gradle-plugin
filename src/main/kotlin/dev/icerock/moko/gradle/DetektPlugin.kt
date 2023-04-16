@@ -36,7 +36,7 @@ class DetektPlugin : Plugin<Project> {
         target.tasks.getByName("check").dependsOn(detektTask)
 
         target.dependencies {
-            "detektPlugins"("io.gitlab.arturbosch.detekt:detekt-formatting:1.19.0")
+            "detektPlugins"("io.gitlab.arturbosch.detekt:detekt-formatting:1.22.0")
         }
     }
 }
