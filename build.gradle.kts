@@ -152,6 +152,6 @@ signing {
 
     if (signingKeyId != null) {
         useInMemoryPgpKeys(signingKeyId, signingKey, signingPassword)
-        sign(publishing.publications)
+        sign(configurations.archives.get())
     }
 }

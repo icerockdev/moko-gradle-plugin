@@ -77,7 +77,7 @@ class PublicationPlugin : Plugin<Project> {
 
             if (signingKeyId != null) {
                 useInMemoryPgpKeys(signingKeyId, signingKey, signingPassword)
-                sign(target.extensions.getByType<PublishingExtension>().publications)
+                sign(configuration.artifacts.toString())
             }
         }
     }
