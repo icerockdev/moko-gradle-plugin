@@ -19,15 +19,13 @@ class DetektPlugin : Plugin<Project> {
         }
 
         val detektTasks: TaskCollection<Detekt> = target.tasks.withType()
-        target.afterEvaluate {
-            detektTasks.configureEach {
-                this.source = source.matching {
-                    exclude {
-                        it.file.path.startsWith(target.buildDir.path)
-                    }
-                }
+        val buildDirPath = target.layout.buildDirectory.asFile.get().path
+        detektTasks.configureEach {
+            exclude { element ->
+                element.file.path.startsWith(buildDirPath)
             }
         }
+
         val detektTask = target.tasks.register("detektWithoutTests") {
             group = "verification"
 
