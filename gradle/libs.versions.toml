@@ -1,9 +1,9 @@
 [versions]
-mokoGradlePluginVersion = "0.4.0"
+mokoGradlePluginVersion = "0.4.1"
 
 kotlinVersion = "1.9.25"
 androidGradlePluginVerison = "8.3.2"
-mobileMultiplatformVersion = "0.14.3"
+mobileMultiplatformVersion = "0.14.4"
 detektVersion = "1.22.0"
 nexusPublishVersion = "1.1.0"
 
