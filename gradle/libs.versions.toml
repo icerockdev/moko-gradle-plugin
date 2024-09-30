@@ -1,11 +1,11 @@
 [versions]
-mokoGradlePluginVersion = "0.4.1"
+mokoGradlePluginVersion = "0.4.2"
 
 kotlinVersion = "1.9.25"
 androidGradlePluginVerison = "8.3.2"
 mobileMultiplatformVersion = "0.14.4"
 detektVersion = "1.22.0"
-nexusPublishVersion = "1.1.0"
+nexusPublishVersion = "2.0.0"
 
 [libraries]
 androidGradlePlugin = { module = "com.android.tools.build:gradle", version.ref = "androidGradlePluginVerison" }
