@@ -4,7 +4,7 @@
 
 package dev.icerock.moko.gradle
 
-import com.android.build.gradle.AppExtension
+import com.android.build.api.dsl.ApplicationExtension
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.configure
@@ -18,7 +18,7 @@ class AndroidAppPlugin : Plugin<Project> {
             apply(AndroidBasePlugin::class.java)
         }
 
-        target.configure<AppExtension> {
+        target.configure<ApplicationExtension> {
             buildTypes {
                 getByName("release") {
                     isMinifyEnabled = true
@@ -33,12 +33,10 @@ class AndroidAppPlugin : Plugin<Project> {
                 }
             }
 
-            packagingOptions {
-                with(resources.excludes) {
-                    add("META-INF/*.kotlin_module")
-                    add("META-INF/AL2.0")
-                    add("META-INF/LGPL2.1")
-                }
+            packaging {
+                resources.excludes.add("META-INF/*.kotlin_module")
+                resources.excludes.add("META-INF/AL2.0")
+                resources.excludes.add("META-INF/LGPL2.1")
             }
         }
     }
