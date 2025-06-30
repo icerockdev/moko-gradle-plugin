@@ -121,35 +121,31 @@ nexusPublishing {
 }
 
 publishing {
-    publications {
-        register("mavenJava", MavenPublication::class) {
-            from(components["java"])
+    publications.withType<MavenPublication>().configureEach {
+        pom {
+            name.set("MOKO gradle plugin")
+            description.set("This is a Gradle plugin with common build logic for all MOKO libraries.")
+            url.set("https://github.com/icerockdev/moko-gradle-plugin")
+            licenses {
+                license {
+                    name.set("Apache-2.0")
+                    distribution.set("repo")
+                    url.set("https://github.com/icerockdev/moko-gradle-plugin/blob/master/LICENSE.md")
+                }
+            }
 
-            pom {
-                name.set("MOKO gradle plugin")
-                description.set("This is a Gradle plugin with common build logic for all MOKO libraries.")
+            developers {
+                developer {
+                    id.set("Alex009")
+                    name.set("Aleksey Mikhailov")
+                    email.set("aleksey.mikhailov@icerockdev.com")
+                }
+            }
+
+            scm {
+                connection.set("scm:git:ssh://github.com/icerockdev/moko-gradle-plugin.git")
+                developerConnection.set("scm:git:ssh://github.com/icerockdev/moko-gradle-plugin.git")
                 url.set("https://github.com/icerockdev/moko-gradle-plugin")
-                licenses {
-                    license {
-                        name.set("Apache-2.0")
-                        distribution.set("repo")
-                        url.set("https://github.com/icerockdev/moko-gradle-plugin/blob/master/LICENSE.md")
-                    }
-                }
-
-                developers {
-                    developer {
-                        id.set("Alex009")
-                        name.set("Aleksey Mikhailov")
-                        email.set("aleksey.mikhailov@icerockdev.com")
-                    }
-                }
-
-                scm {
-                    connection.set("scm:git:ssh://github.com/icerockdev/moko-gradle-plugin.git")
-                    developerConnection.set("scm:git:ssh://github.com/icerockdev/moko-gradle-plugin.git")
-                    url.set("https://github.com/icerockdev/moko-gradle-plugin")
-                }
             }
         }
     }
