@@ -49,61 +49,92 @@ gradlePlugin {
         create("android-app") {
             id = "dev.icerock.moko.gradle.android.application"
             implementationClass = "dev.icerock.moko.gradle.AndroidAppPlugin"
+            displayName = "MOKO Android Application Plugin"
+            description = "Configures an Android application module with MOKO conventions."
         }
+
         create("android-library") {
             id = "dev.icerock.moko.gradle.android.library"
             implementationClass = "dev.icerock.moko.gradle.AndroidLibraryPlugin"
+            displayName = "MOKO Android Library Plugin"
+            description = "Configures an Android library module with MOKO build settings."
         }
+
         create("android-base") {
             id = "dev.icerock.moko.gradle.android.base"
             implementationClass = "dev.icerock.moko.gradle.AndroidBasePlugin"
+            displayName = "MOKO Android Base Plugin"
+            description = "Provides base configuration for Android projects in MOKO."
         }
+
         create("android-publication") {
             id = "dev.icerock.moko.gradle.android.publication"
             implementationClass = "dev.icerock.moko.gradle.AndroidPublicationPlugin"
+            displayName = "MOKO Android Publication Plugin"
+            description = "Handles publication setup for Android libraries in MOKO."
         }
 
         create("detekt") {
             id = "dev.icerock.moko.gradle.detekt"
             implementationClass = "dev.icerock.moko.gradle.DetektPlugin"
+            displayName = "MOKO Detekt Plugin"
+            description = "Integrates Detekt static code analysis with MOKO projects."
         }
 
         create("multiplatform-mobile") {
             id = "dev.icerock.moko.gradle.multiplatform.mobile"
             implementationClass = "dev.icerock.moko.gradle.KmmLibraryPlugin"
+            displayName = "MOKO Multiplatform Mobile Plugin"
+            description = "Configures Kotlin Multiplatform Mobile (KMM) modules for MOKO."
         }
+
         create("multiplatform-all") {
             id = "dev.icerock.moko.gradle.multiplatform.all"
             implementationClass = "dev.icerock.moko.gradle.KmpLibraryPlugin"
+            displayName = "MOKO Multiplatform Plugin"
+            description = "Applies MOKO conventions for full Kotlin Multiplatform (KMP) libraries."
         }
 
         create("publication") {
             id = "dev.icerock.moko.gradle.publication"
             implementationClass = "dev.icerock.moko.gradle.PublicationPlugin"
+            displayName = "MOKO Publication Plugin"
+            description = "Base plugin for handling Maven publication logic in MOKO."
         }
+
         create("publication-nexus") {
             id = "dev.icerock.moko.gradle.publication.nexus"
             implementationClass = "dev.icerock.moko.gradle.NexusPublicationPlugin"
+            displayName = "MOKO Nexus Publication Plugin"
+            description = "Publishes artifacts to Maven Central via Sonatype Nexus from MOKO."
         }
 
         create("publication-hosts") {
             id = "dev.icerock.moko.gradle.publication.hosts"
             implementationClass = "dev.icerock.moko.gradle.HostsPublicationPlugin"
+            displayName = "MOKO Hosts Publication Plugin"
+            description = "Configures conditional Maven publication logic to separate hosts-dependend publication."
         }
 
         create("stubjavadoc") {
             id = "dev.icerock.moko.gradle.stub.javadoc"
             implementationClass = "dev.icerock.moko.gradle.StubJavaDocPlugin"
+            displayName = "MOKO Stub Javadoc Plugin"
+            description = "Generates stub Javadoc artifacts required for Maven Central publication."
         }
 
         create("tests") {
             id = "dev.icerock.moko.gradle.tests"
             implementationClass = "dev.icerock.moko.gradle.TestsReportPlugin"
+            displayName = "MOKO Tests Plugin"
+            description = "Configures test tasks and reporting for MOKO projects."
         }
 
         create("jvm") {
             id = "dev.icerock.moko.gradle.jvm"
             implementationClass = "dev.icerock.moko.gradle.JvmPlugin"
+            displayName = "MOKO JVM Plugin"
+            description = "Applies default settings for JVM-only modules in MOKO projects."
         }
     }
 }
