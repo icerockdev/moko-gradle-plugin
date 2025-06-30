@@ -166,4 +166,9 @@ signing {
         useInMemoryPgpKeys(signingKeyId, signingKey, signingPassword)
         sign(publishing.publications)
     }
+
+    val signingTasks = tasks.withType<Sign>()
+    tasks.withType<PublishToMavenRepository>().configureEach {
+        dependsOn(signingTasks)
+    }
 }

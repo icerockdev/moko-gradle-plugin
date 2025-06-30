@@ -10,9 +10,11 @@ import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.api.publish.PublishingExtension
 import org.gradle.api.publish.maven.MavenPublication
+import org.gradle.api.publish.maven.tasks.PublishToMavenRepository
 import org.gradle.kotlin.dsl.configure
 import org.gradle.kotlin.dsl.getByType
 import org.gradle.kotlin.dsl.withType
+import org.gradle.plugins.signing.Sign
 import org.gradle.plugins.signing.SigningExtension
 import java.util.Base64
 
@@ -78,6 +80,11 @@ class PublicationPlugin : Plugin<Project> {
             if (signingKeyId != null) {
                 useInMemoryPgpKeys(signingKeyId, signingKey, signingPassword)
                 sign(target.extensions.getByType<PublishingExtension>().publications)
+            }
+
+            val signingTasks = target.tasks.withType<Sign>()
+            target.tasks.withType<PublishToMavenRepository>().configureEach {
+                dependsOn(signingTasks)
             }
         }
     }
