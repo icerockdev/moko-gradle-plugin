@@ -25,7 +25,7 @@ jobs:
         with:
           java-version: 11
       - name: Publish to MavenCentral
-        run: ./gradlew publishMavenJavaPublicationToOSSRHRepository
+        run: ./gradlew publishToSonatype closeAndReleaseSonatypeStagingRepository
   release:
     name: Create release
     needs: publish

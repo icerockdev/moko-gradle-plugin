@@ -2,6 +2,7 @@
  * Copyright 2022 IceRock MAG Inc. Use of this source code is governed by the Apache 2.0 license.
  */
 
+import java.net.URI
 import java.util.Base64
 
 plugins {
@@ -9,6 +10,7 @@ plugins {
     id("org.gradle.maven-publish")
     id("signing")
     id("java-gradle-plugin")
+    id("io.github.gradle-nexus.publish-plugin") version "2.0.0"
 }
 
 group = "dev.icerock.moko"
@@ -34,6 +36,12 @@ java {
     targetCompatibility = JavaVersion.VERSION_11
     withJavadocJar()
     withSourcesJar()
+}
+
+tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {
+    kotlinOptions {
+        jvmTarget = "11"
+    }
 }
 
 gradlePlugin {
@@ -100,15 +108,19 @@ gradlePlugin {
     }
 }
 
-publishing {
-    repositories.maven("https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/") {
-        name = "OSSRH"
-
-        credentials {
-            username = System.getenv("OSSRH_USER")
-            password = System.getenv("OSSRH_KEY")
+nexusPublishing {
+    repositories {
+        // see https://central.sonatype.org/publish/publish-portal-ossrh-staging-api/#configuration
+        sonatype {
+            nexusUrl.set(uri("https://ossrh-staging-api.central.sonatype.com/service/local/"))
+            snapshotRepositoryUrl.set(URI.create("https://central.sonatype.com/repository/maven-snapshots/"))
+            username.set(System.getenv("OSSRH_USER"))
+            password.set(System.getenv("OSSRH_KEY"))
         }
     }
+}
+
+publishing {
     publications {
         register("mavenJava", MavenPublication::class) {
             from(components["java"])

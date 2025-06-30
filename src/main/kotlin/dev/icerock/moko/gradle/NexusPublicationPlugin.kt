@@ -19,8 +19,10 @@ class NexusPublicationPlugin : Plugin<Project> {
 
         target.configure<NexusPublishExtension> {
             repositories {
+                // see https://central.sonatype.org/publish/publish-portal-ossrh-staging-api/#configuration
                 sonatype {
-                    nexusUrl.set(URI.create("https://s01.oss.sonatype.org/service/local/"))
+                    nexusUrl.set(URI.create("https://ossrh-staging-api.central.sonatype.com/service/local/"))
+                    snapshotRepositoryUrl.set(URI.create("https://central.sonatype.com/repository/maven-snapshots/"))
                     username.set(System.getenv("OSSRH_USER"))
                     password.set(System.getenv("OSSRH_KEY"))
                 }
