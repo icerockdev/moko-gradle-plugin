@@ -10,7 +10,7 @@ import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.api.publish.PublishingExtension
 import org.gradle.api.publish.maven.MavenPublication
-import org.gradle.api.publish.maven.tasks.PublishToMavenRepository
+import org.gradle.api.publish.maven.tasks.AbstractPublishToMaven
 import org.gradle.kotlin.dsl.configure
 import org.gradle.kotlin.dsl.getByType
 import org.gradle.kotlin.dsl.withType
@@ -83,7 +83,7 @@ class PublicationPlugin : Plugin<Project> {
             }
 
             val signingTasks = target.tasks.withType<Sign>()
-            target.tasks.withType<PublishToMavenRepository>().configureEach {
+            target.tasks.withType<AbstractPublishToMaven>().configureEach {
                 dependsOn(signingTasks)
             }
         }

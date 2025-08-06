@@ -1,5 +1,5 @@
 [versions]
-mokoGradlePluginVersion = "0.5.0"
+mokoGradlePluginVersion = "0.5.1"
 
 kotlinVersion = "1.9.25"
 androidGradlePluginVerison = "8.3.2"
