@@ -12,6 +12,7 @@ import org.gradle.api.Project
 import org.gradle.api.plugins.JavaPluginExtension
 import org.gradle.kotlin.dsl.configure
 import org.gradle.kotlin.dsl.withType
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 class AndroidBasePlugin : Plugin<Project> {
@@ -38,7 +39,7 @@ class AndroidBasePlugin : Plugin<Project> {
         target.tasks
             .withType<KotlinCompile>()
             .configureEach {
-                kotlinOptions.jvmTarget = "11"
+                compilerOptions.jvmTarget.set(JvmTarget.JVM_11)
             }
     }
 }

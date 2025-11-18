@@ -21,9 +21,17 @@ import java.util.Base64
 class PublicationPlugin : Plugin<Project> {
 
     override fun apply(target: Project) {
+        val signingKeyId: String? = System.getenv("SIGNING_KEY_ID")
+        val signingPassword: String? = System.getenv("SIGNING_PASSWORD")
+        val signingKey: String? = System.getenv("SIGNING_KEY")?.let { base64Key ->
+            String(Base64.getDecoder().decode(base64Key))
+        }
+
         with(target.plugins) {
             apply("org.gradle.maven-publish")
-            apply("signing")
+            if (signingKey != null) {
+                apply("signing")
+            }
         }
 
         val libraryName: String = target.requiredStringProperty("publish.name")
@@ -70,21 +78,17 @@ class PublicationPlugin : Plugin<Project> {
             }
         }
 
-        target.configure<SigningExtension> {
-            val signingKeyId: String? = System.getenv("SIGNING_KEY_ID")
-            val signingPassword: String? = System.getenv("SIGNING_PASSWORD")
-            val signingKey: String? = System.getenv("SIGNING_KEY")?.let { base64Key ->
-                String(Base64.getDecoder().decode(base64Key))
-            }
+        if (signingKey != null) {
+            target.configure<SigningExtension> {
+                if (signingKeyId != null) {
+                    useInMemoryPgpKeys(signingKeyId, signingKey, signingPassword)
+                    sign(target.extensions.getByType<PublishingExtension>().publications)
+                }
 
-            if (signingKeyId != null) {
-                useInMemoryPgpKeys(signingKeyId, signingKey, signingPassword)
-                sign(target.extensions.getByType<PublishingExtension>().publications)
-            }
-
-            val signingTasks = target.tasks.withType<Sign>()
-            target.tasks.withType<AbstractPublishToMaven>().configureEach {
-                dependsOn(signingTasks)
+                val signingTasks = target.tasks.withType<Sign>()
+                target.tasks.withType<AbstractPublishToMaven>().configureEach {
+                    dependsOn(signingTasks)
+                }
             }
         }
     }

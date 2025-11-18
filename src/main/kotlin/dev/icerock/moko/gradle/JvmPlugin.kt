@@ -14,6 +14,7 @@ import org.gradle.kotlin.dsl.configure
 import org.gradle.kotlin.dsl.get
 import org.gradle.kotlin.dsl.register
 import org.gradle.kotlin.dsl.withType
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 class JvmPlugin : Plugin<Project> {
@@ -32,7 +33,7 @@ class JvmPlugin : Plugin<Project> {
         target.tasks
             .withType<KotlinCompile>()
             .configureEach {
-                kotlinOptions.jvmTarget = "1.8"
+                compilerOptions.jvmTarget.set(JvmTarget.JVM_1_8)
             }
 
         target.plugins.withId("org.gradle.maven-publish") {

@@ -23,7 +23,7 @@ class KmmLibraryPlugin : Plugin<Project> {
         }
 
         target.configure<KotlinMultiplatformExtension> {
-            android {
+            androidTarget {
                 publishAllLibraryVariants()
                 publishLibraryVariantsGroupedByFlavor = true
             }
