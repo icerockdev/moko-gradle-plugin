@@ -1,7 +1,6 @@
 /*
  * Copyright 2022 IceRock MAG Inc. Use of this source code is governed by the Apache 2.0 license.
  */
-
 package dev.icerock.moko.gradle
 
 import dev.icerock.moko.gradle.utils.connectTargetsToSourceSet
@@ -39,7 +38,7 @@ class KmmLibraryPlugin : Plugin<Project> {
                 setupDependency("ios", "common")
                 connectTargetsToSourceSet(
                     targetNames = listOf("iosX64", "iosArm64", "iosSimulatorArm64"),
-                    sourceSetPrefix = "ios"
+                    sourceSetPrefix = "ios",
                 )
 
                 // kotlin stdlib in common

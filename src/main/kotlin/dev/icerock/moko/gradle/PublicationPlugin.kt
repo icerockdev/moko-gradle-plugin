@@ -1,7 +1,6 @@
 /*
  * Copyright 2022 IceRock MAG Inc. Use of this source code is governed by the Apache 2.0 license.
  */
-
 package dev.icerock.moko.gradle
 
 import dev.icerock.moko.gradle.utils.requiredStringProperty
@@ -99,7 +98,7 @@ class PublicationPlugin : Plugin<Project> {
         return Developer(
             id = items[0],
             name = items[1],
-            email = items[2]
+            email = items[2],
         )
     }
 
