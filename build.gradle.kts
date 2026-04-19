@@ -9,9 +9,10 @@ plugins {
     id("org.gradle.maven-publish")
     id("signing")
     id("java-gradle-plugin")
+    id("com.diffplug.spotless") version "6.25.0"
 }
 
-group = "dev.icerock.moko"
+group = "io.github.khalid64927"
 version = libs.versions.mokoGradlePluginVersion.get()
 
 repositories {
@@ -27,6 +28,18 @@ dependencies {
     api(libs.mobileMultiplatformGradlePlugin)
     api(libs.detektGradlePlugin)
     api(libs.nexusPublishGradlePlugin)
+}
+
+spotless {
+    kotlin {
+        target("src/**/*.kt")
+        ktlint("0.50.0")
+        licenseHeader("/*\n * Copyright 2022 IceRock MAG Inc. Use of this source code is governed by the Apache 2.0 license.\n */")
+    }
+    kotlinGradle {
+        target("*.gradle.kts")
+        ktlint("0.50.0")
+    }
 }
 
 java {
@@ -152,6 +165,7 @@ signing {
 
     if (signingKeyId != null) {
         useInMemoryPgpKeys(signingKeyId, signingKey, signingPassword)
-        sign(publishing.publications)
+        // sign(publishing.publications)
+        sign(configurations.archives.get())
     }
 }

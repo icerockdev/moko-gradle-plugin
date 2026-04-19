@@ -1,7 +1,6 @@
 /*
  * Copyright 2022 IceRock MAG Inc. Use of this source code is governed by the Apache 2.0 license.
  */
-
 package dev.icerock.moko.gradle
 
 import org.gradle.api.Plugin
@@ -20,7 +19,7 @@ class TestsReportPlugin : Plugin<Project> {
                 events = setOf(
                     TestLogEvent.SKIPPED,
                     TestLogEvent.PASSED,
-                    TestLogEvent.FAILED
+                    TestLogEvent.FAILED,
                 )
                 showStandardStreams = true
             }

@@ -1,7 +1,6 @@
 /*
  * Copyright 2022 IceRock MAG Inc. Use of this source code is governed by the Apache 2.0 license.
  */
-
 package dev.icerock.moko.gradle
 
 import dev.icerock.moko.gradle.utils.connectTargetsToSourceSet
@@ -57,11 +56,11 @@ class KmpLibraryPlugin : Plugin<Project> {
                     "watchosSimulatorArm64",
                     "tvosArm64",
                     "tvosSimulatorArm64",
-                    "tvosX64"
+                    "tvosX64",
                 )
                 val nativeTargets = appleTargets + listOf(
                     "linuxX64",
-                    "mingwX64"
+                    "mingwX64",
                 )
                 val targetWithoutAndroid = nativeTargets + listOf(
                     "js",
