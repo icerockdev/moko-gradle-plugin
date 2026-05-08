@@ -19,6 +19,11 @@ fun NamedDomainObjectContainer<KotlinSourceSet>.setupDependency(name: String, de
     getByName("${name}Test").dependsOn(getByName("${dependencyName}Test"))
 }
 
+fun NamedDomainObjectContainer<KotlinSourceSet>.setupDependencyAndroidOn(dependencyName: String) {
+    getByName("androidMain").dependsOn(getByName("${dependencyName}Main"))
+    getByName("androidUnitTest").dependsOn(getByName("${dependencyName}Test"))
+}
+
 fun NamedDomainObjectContainer<KotlinSourceSet>.createMainTest(name: String) {
     create("${name}Main")
     create("${name}Test")

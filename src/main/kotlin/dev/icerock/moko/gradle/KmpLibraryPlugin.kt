@@ -7,6 +7,7 @@ package dev.icerock.moko.gradle
 import dev.icerock.moko.gradle.utils.connectTargetsToSourceSet
 import dev.icerock.moko.gradle.utils.createMainTest
 import dev.icerock.moko.gradle.utils.setupDependency
+import dev.icerock.moko.gradle.utils.setupDependencyAndroidOn
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.configure
@@ -81,8 +82,8 @@ class KmpLibraryPlugin : Plugin<Project> {
 
                 createMainTest("mobile")
                 setupDependency("mobile", "common")
-                setupDependency("android", "mobile")
                 setupDependency("ios", "mobile")
+                setupDependencyAndroidOn("mobile")
             }
         }
     }
